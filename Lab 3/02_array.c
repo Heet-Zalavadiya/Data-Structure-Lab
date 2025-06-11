@@ -10,11 +10,11 @@ int main()
     printf("Enter value of n : \n");
     scanf("%d", &n);
     int arr[n - m + 1];
-    for (int i = m; i < n; i++)
+    for (int i = m; i <= n; i++)
     {
         arr[i] = i;
     }
-    for (int i = m; i < n; i++)
+    for (int i = m; i <= n; i++)
     {
         sum += arr[i];
     }
