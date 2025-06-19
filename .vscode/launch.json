@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": ".",
-      "program": "build/Debug/outDebug",
+      "cwd": "d:/B Tech CSE/3 sem/DS/Lab program/Data-Structure-Lab/Lab 9",
+      "program": "d:/B Tech CSE/3 sem/DS/Lab program/Data-Structure-Lab/Lab 9/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
