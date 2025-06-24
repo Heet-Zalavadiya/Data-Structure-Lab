@@ -1,0 +1,10 @@
+int lengthOfLastWord(char* s) {
+    char *array[100];
+    int i = 0;
+    char* token = strtok(s, " ");
+    while (token != NULL) {
+        array[i++] = token;
+        token = strtok(NULL, " ");
+    }
+    return  strlen(array[i - 1]);
+}
