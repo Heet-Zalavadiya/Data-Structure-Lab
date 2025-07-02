@@ -40,7 +40,7 @@ void removeDuplicate()
                 return;
             }
         }
-        else
+        else    
         {
             p = p->next;
             q = q->next;
