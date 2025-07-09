@@ -1,0 +1,73 @@
+/*class Node{
+    int coeff;
+    int pow;
+    Node next;
+    Node(int a,int b)
+    {
+        coeff=a;
+        pow=b;
+        next=null;
+    }
+}*/
+
+// Print the polynomial formed by adding both LL in the function itself.
+class Solution {
+    public static Node addPolynomial(Node head1, Node head2) {
+        // Add your code here.
+        Node curr1 = head1;
+        Node curr2 = head2;
+        
+        while(curr1 != null && curr2 != null){
+            Node curr3 = null;
+            Node head3 = null;
+            if(curr1.pow > curr2.pow){
+                Node newNode = new Node();
+                if(head3 == null){
+                    head3 = newNode;
+                }
+                curr3 = newNode;
+                newNode.coeff = curr1.coeff;
+                newNode.pow = curr1.pow;
+                newNode.next = null;
+                curr1 = curr1.next;
+            }
+            if(curr1.pow == curr2.pow){
+                Node newNode = new Node();
+                if(head3 == null){
+                    head3 = newNode;
+                }
+                newNode.coeff = curr1.coeff + curr2.coeff;
+                newNode.pow = curr1.pow;
+                newNode.next = null;
+                curr1 = curr1.next;
+                curr2 = curr2.next;
+                curr3.next = newNode;
+                curr3 = newNode;
+            }
+        }
+            if(curr1 != null){
+                while(curr1!= null){
+                    Node newNode = new Node();
+                    newNode.coeff = curr1.coeff;
+                    newNode.pow = curr1.pow;
+                    newNode.next = null;
+                    curr3.next = newNode;
+                    curr3 = newNode;
+                    curr1 = curr1.next; 
+                }
+            }
+            if(curr2 != null){
+                while(curr2!= null){
+                    Node newNode = new Node();
+                    newNode.coeff = curr2.coeff;
+                    newNode.pow = curr2.pow;
+                    newNode.next = null;
+                    curr3.next = newNode;
+                    curr3 = newNode;
+                    curr2 = curr2.next;
+                }
+            }
+            
+        return head3;
+    }
+}
