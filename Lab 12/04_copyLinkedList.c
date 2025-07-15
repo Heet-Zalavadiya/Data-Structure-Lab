@@ -21,7 +21,7 @@ void LinkedListTraversal(struct Node *ptr)
         printf("Element %d\n", ptr->info);
         ptr = ptr->link;
     }
-}
+} 
 
 // Function to create a copy of the linked list
 struct Node *copy(struct Node *head)
