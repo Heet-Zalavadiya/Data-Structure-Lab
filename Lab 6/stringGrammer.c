@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int top = -1;
-int max = 3;
+int top = 1;
+int max = 100;
 char *stack;
-char string[3] = {'a', 'b', 'c', 'b', 'a'};
+char string[5] = {'a', 'b', 'c', 'b', 'a'};
 
 
 // stack logic 
@@ -16,7 +16,6 @@ void push(int x)
         return;
     }
     top = top + 1;
-    stack[top] = x;
     return;
 }
 
@@ -62,6 +61,9 @@ void display()
 }
 
 // string grammer logic
+char nextChar(){
+    return string[top];
+}
 
 int main()
 {

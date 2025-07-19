@@ -7,7 +7,7 @@ class Node {
         coeff = a;
         pow = b;
         next = null;
-    }
+    } 
 }
 
 class Solution {
