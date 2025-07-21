@@ -66,7 +66,7 @@ void insertEndMusic(char *song)
 
 void display()
 {
-    printf("Playing : %s\n", curr->music); 
+    printf("Playing : %s\n", curr->music);
 }
 
 void deleteAtPosition()
@@ -83,12 +83,12 @@ void playNextSong()
     curr = curr->next;
     display();
 }
+
 void playPreviousSong()
 {
     curr = curr->prev;
     display();
 }
-
 
 int main()
 {
