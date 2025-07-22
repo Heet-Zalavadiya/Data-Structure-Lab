@@ -40,8 +40,8 @@ void LinkedListTraversal()
     printf("\n");
 }
 
-// circular doubly linked list
-void insertEndMusic(char *song)
+// circular doubly linked list 
+void insertEndMusic(char *song) 
 {
     struct Node *pointNode;
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
