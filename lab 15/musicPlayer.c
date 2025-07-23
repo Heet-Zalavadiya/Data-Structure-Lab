@@ -9,9 +9,9 @@ struct Node
     struct Node *prev;
 };
 
-struct Node *l;
+struct Node *l; 
 struct Node *r;
-struct Node *curr;
+struct Node *curr; 
 
 void LinkedListTraversal()
 {
@@ -31,7 +31,7 @@ void LinkedListTraversal()
 
     // Traverse backward (prev)
     printf("Backward Traversal:\n");
-    do
+    do 
     {
         printf("%s\t", ptr->music);
         ptr = ptr->prev;
