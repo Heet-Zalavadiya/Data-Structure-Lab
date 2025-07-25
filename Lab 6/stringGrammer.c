@@ -43,6 +43,8 @@ char peep(int indexFromTop)
     return (stack[top - indexFromTop + 1]);
 }
 
+
+
 void change(int x, int indexFromTop)
 {
     if ((top - indexFromTop + 1) < 0)
