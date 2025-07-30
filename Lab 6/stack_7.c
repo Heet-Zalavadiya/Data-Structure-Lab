@@ -22,33 +22,37 @@ char pop()
 {
     if (top < 0)
     {
-        printf("Invalid : more b's than a's\n");
+        printf("Stack Underflow\n");
         return '\0';
     }
+    char temp = stack[top];
     top = top - 1;
-    return (stack[top + 1]);
+    return temp;
 }
 
 void vowel_anxity(char *s)
 {
     i = 0;
-    int index = 0;
+    int index = -1;
     while (s[i] != '\0')
     {
-
         if (s[i] != 'a' && s[i] != 'e' && s[i] != 'i' && s[i] != 'o' && s[i] != 'u')
         {
             push(s[i]);
+            index = top;
             i++;
-            index = i;
         }
         else
         {
-            for (int j = 0; j < index; index--, j++)
+            int start = 0;
+            int end = index;
+            while (start < end)
             {
-                char temp = stack[j];
-                stack[j] = stack[index];
-                stack[index] = temp;
+                char temp = stack[start];
+                stack[start] = stack[end];
+                stack[end] = temp;
+                start++;
+                end--;
             }
             i++;
         }
