@@ -46,9 +46,9 @@ void vowel_anxity(char *s)
         {
             for (int j = 0; j < index; index--, j++)
             {
-                char temp = s[j];
-                s[j] = s[index];
-                s[index] = temp;
+                char temp = stack[j];
+                stack[j] = stack[index];
+                stack[index] = temp;
             }
             i++;
         }
