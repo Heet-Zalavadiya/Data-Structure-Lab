@@ -44,6 +44,7 @@ void vowel_anxity(char *s)
         }
         else
         {
+            push(s[i]);
             int start = 0;
             int end = index;
             while (start < end)
@@ -72,6 +73,7 @@ void display()
 int main()
 {
     stack = (char *)malloc(max * sizeof(char));
+    // char s[] = "bcadage";
     char s[] = "abcdefghij";
     vowel_anxity(s);
     display();
