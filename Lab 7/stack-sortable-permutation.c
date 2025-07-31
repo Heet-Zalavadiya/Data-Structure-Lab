@@ -45,7 +45,7 @@ void sortable_permutation(int *b)
 {
     int i = 0;
     int j = 0;
-    while (1)
+    while (i < n || (top >= 0 && b[i] == stack[top]))
     {
         if (peek() == expected)
         {
