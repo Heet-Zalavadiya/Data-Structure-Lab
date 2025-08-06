@@ -35,6 +35,7 @@ struct Node *insert(struct Node *node, int key)
     return node;
 }
 
+// function to find the value node in a tree
 struct Node *search(struct Node *root, int key)
 {
     if (root == NULL || root->key == key)
@@ -48,6 +49,7 @@ struct Node *search(struct Node *root, int key)
     return search(root->left, key);
 }
 
+// pre order traversal
 void preorder(struct Node *root)
 {
     if (root == NULL)
@@ -72,6 +74,7 @@ void preorder(struct Node *root)
     return;
 }
 
+// in order traversal
 void inorder(struct Node *root)
 {
     if (root == NULL)
@@ -94,9 +97,10 @@ void inorder(struct Node *root)
     return;
 }
 
+// post order traversal
 void postorder(struct Node *root)
 {
-     if (root == NULL)
+    if (root == NULL)
     {
         printf("Tree is empty");
         return;
@@ -113,6 +117,53 @@ void postorder(struct Node *root)
     }
     printf("%d ", root->key);
     return;
+}
+
+// in order predecessor
+struct Node *inOrderPredecessor(struct Node *root)
+{
+    root = root->left;
+    while (root->right != NULL)
+    {
+        root = root->right;
+    }
+    return root;
+}
+
+// delete a node
+struct Node *deleteNode(struct Node *root, int key)
+{
+    struct Node *ipre;
+    while (root == NULL)
+    {
+        return NULL;
+    }
+    if (root->left == NULL && root->right == NULL)
+    {
+        free(root);
+        return NULL;
+    }
+
+    // search for the node to be deleted
+    if (key < root->key)
+    {
+        root->left = deleteNode(root->left, key);
+    }
+    else if (key > root->key)
+    {
+        root->right = deleteNode(root->right, key);
+    }
+
+    // deletion method when root is found
+
+    else
+    {
+        ipre = inOrderPredecessor(root);
+        root->key = ipre->key;
+        root->left = deleteNode(root->left, ipre->key);
+    }
+
+    return root;
 }
 
 int main()
@@ -138,6 +189,11 @@ int main()
     printf("PostOrder Traversal: ");
     postorder(root);
     printf("\n");
+
     
+    root = deleteNode(root, 80);
+    root = deleteNode(root, 30);
+    inorder(root);
+    printf("\n");
     return 0;
 }
