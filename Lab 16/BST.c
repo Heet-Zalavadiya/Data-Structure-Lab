@@ -85,14 +85,14 @@ void inorder(struct Node *root)
 
     if (root->left != NULL)
     {
-        preorder(root->left);
+        inorder(root->left);
     }
 
     printf("%d ", root->key);
 
     if (root->right != NULL)
     {
-        preorder(root->right);
+        inorder(root->right);
     }
     return;
 }
@@ -108,12 +108,12 @@ void postorder(struct Node *root)
 
     if (root->left != NULL)
     {
-        preorder(root->left);
+        postorder(root->left);
     }
 
     if (root->right != NULL)
     {
-        preorder(root->right);
+        postorder(root->right);
     }
     printf("%d ", root->key);
     return;
