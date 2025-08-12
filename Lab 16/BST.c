@@ -138,11 +138,11 @@ struct Node *deleteNode(struct Node *root, int key)
     {
         return NULL;
     }
-    if (root->left == NULL && root->right == NULL)
-    {
-        free(root);
-        return NULL;
-    }
+    // if (root->left == NULL && root->right == NULL)
+    // {
+    //     free(root);
+    //     return NULL;
+    // }
 
     // search for the node to be deleted
     if (key < root->key)
@@ -158,6 +158,16 @@ struct Node *deleteNode(struct Node *root, int key)
 
     else
     {
+        if (root->left == NULL)
+        {
+            return root->right;
+        }
+
+        if (root->right == NULL)
+        {
+            return root->left;
+        }
+
         ipre = inOrderPredecessor(root);
         root->key = ipre->key;
         root->left = deleteNode(root->left, ipre->key);
@@ -190,7 +200,6 @@ int main()
     postorder(root);
     printf("\n");
 
-    
     root = deleteNode(root, 80);
     root = deleteNode(root, 30);
     inorder(root);
