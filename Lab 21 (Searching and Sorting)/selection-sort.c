@@ -1,27 +1,27 @@
 #include <stdio.h>
 
-void swap(int *a, int *b) {
+void swap(int *a, int *b)
+{
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-
 void selectionSort(int *a, int n) // O(n ^2)
 {
-    for (size_t i = 0; i < n; i++)
+    for (size_t i = 0; i < n - 1; i++)
     {
         int min = i;
-        for (size_t j = 0; j < n; j++)
+        for (size_t j = i + 1; j < n; j++)
         {
-            if (a[j] < a[min] )
+            if (a[j] < a[min])
             {
                 min = j;
             }
         }
         if (min != i)
         {
-            swap(a[i] , a[min]);
+            swap(&a[i], &a[min]);
         }
     }
 }
