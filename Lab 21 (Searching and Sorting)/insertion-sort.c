@@ -2,7 +2,8 @@
 
 void inerstionSort(int *a, int n) // O(n^2)
 {
-    for (size_t i = 1; i < n; i++)
+    int i = 1;
+    while (i < n)
     {
         int temp = a[i];
         int j = i - 1;
@@ -12,6 +13,7 @@ void inerstionSort(int *a, int n) // O(n^2)
             j--;
         }
         a[j + 1] = temp;
+        i++;
     }
 }
 
