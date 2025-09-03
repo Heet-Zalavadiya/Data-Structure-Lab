@@ -31,15 +31,18 @@ void quicksort(int lb, int ub)
             }
             if (i < j)
             {
-                swap(k[i], k[j]);
+                swap(&k[i], &k[j]);
             }
             else
             {
                 flag = 0;
             }
-            swap(k[lb], k[j]); 
         }
+        swap(&k[lb], &k[j]);
+        quicksort(lb, j - 1);
+        quicksort(j + 1, ub);
     }
+    return;
 }
 
 int main()
