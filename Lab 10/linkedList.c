@@ -1,95 +1,101 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node
-{
+struct node {
     int info;
     struct node *link;
 };
 
-struct node *first;
-struct node *second;
-struct node *third;
+struct node *first = NULL;
 
-void insertFirst()
-{
+void insertFirst() {
     int x;
-    printf("Enter value of x ");
+    printf("Enter value of x: ");
     scanf("%d", &x);
-    if (first == NULL)
-    {
-        printf("UnderFlow");
-        return;
-    }
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
     newNode->info = x;
     newNode->link = first;
-    first = newNode;
+    first = newNode; 
 }
 
-void insertLast()
-{
+void insertLast() {
     int x;
-    printf("Enter value of x ");
+    printf("Enter value of x: ");
     scanf("%d", &x);
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
     newNode->info = x;
     newNode->link = NULL;
+    if (first == NULL) {
+        first = newNode;
+        return;
+    }
     struct node *save = first;
-    while (save->link != NULL)
-    {
+    while (save->link != NULL) {
         save = save->link;
     }
-    save->link = newNode;  
+    save->link = newNode;
 }
 
-void deleteFirst()
-{
+void deleteFirst() {
+    if (first == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
     struct node *deleteNode = first;
     first = first->link;
     free(deleteNode);
 }
 
-void deleteLast()
-{
-    struct node *p = first;
-    struct node *next = first->link;
-
-    while (next->link != NULL)
-    {
-        p = p->link;
-        next = next->link;
+void deleteLast() {
+    if (first == NULL) {
+        printf("List is empty.\n");
+        return;
     }
-
+    if (first->link == NULL) {
+        free(first);
+        first = NULL;
+        return;
+    }
+    struct node *p = first;
+    while (p->link->link != NULL) {
+        p = p->link;
+    }
+    free(p->link);
     p->link = NULL;
-    free(next);
 }
 
-void deleteIndex(int index)
-{
-    struct node *p = first;
-    struct node *next = first->link;
-    for (int i = 0; i < index - 1; i++)
-    {
-        p = p->link;
-        next = next->link;
+void deleteIndex(int index) {
+    if (first == NULL) {
+        printf("List is empty.\n");
+        return;
     }
+    if (index == 0) {
+        deleteFirst();
+        return;
+    }
+    struct node *p = first;
+    for (int i = 0; i < index - 1 && p->link != NULL; i++) {
+        p = p->link;
+    }
+    if (p->link == NULL) {
+        printf("Invalid index.\n");
+        return;
+    }
+    struct node *next = p->link;
     p->link = next->link;
     free(next);
 }
 
-void display()
-{
+void display() {
     struct node *save = first;
-    while (save != NULL)
-    {
+    while (save != NULL) {
         printf("%d ", save->info);
         save = save->link;
     }
+    printf("\n");
 }
 
-void showMenu()
-{
+void showMenu() {
     printf("1. Insert First\n");
     printf("2. Insert Last\n");
     printf("3. Delete First\n");
@@ -99,64 +105,45 @@ void showMenu()
     printf("7. Exit\n");
 }
 
-int main()
-{
-    first = (struct node *)malloc(sizeof(struct node));
-    second = (struct node *)malloc(sizeof(struct node));
-    third = (struct node *)malloc(sizeof(struct node));
+int main() {
+    // Initial list
+    insertLast(10);
+    insertLast(20);
+    insertLast(30);
 
-    // for first
-    first->link = second;
-    first->info = 10;
-
-    // for second
-    second->link = third;
-    second->info = 20;
-
-    // for third
-    third->link = NULL;
-    third->info = 30;
-
-    while (1)
-    {
+    while (1) {
         int choice;
         showMenu();
         printf("Enter your choice: ");
         scanf("%d", &choice);
-        switch (choice)
-        {
-        case 1:
-            insertFirst();
-            break;
-        case 2:
-            insertLast();
-            break;
-        case 3:
-            deleteFirst();
-            break;
-        case 4:
-            deleteLast();
-            break;
-        case 5:
-        {
-            int index;
-            printf("Enter index to delete: ");
-            scanf("%d", &index);
-            deleteIndex(index);
-        }
-        break;
-        case 6:
-        {
-            display();
-            printf("\n");
-            break;
-        }
-        case 7:
-            exit(0);
-        default:
-            printf("Invalid choice, please try again.\n");
+        switch (choice) {
+            case 1:
+                insertFirst();
+                break;
+            case 2:
+                insertLast();
+                break;
+            case 3:
+                deleteFirst();
+                break;
+            case 4:
+                deleteLast();
+                break;
+            case 5: {
+                int index;
+                printf("Enter index to delete: ");
+                scanf("%d", &index);
+                deleteIndex(index);
+                break;
+            }
+            case 6:
+                display();
+                break;
+            case 7:
+                exit(0);
+            default:
+                printf("Invalid choice, please try again.\n");
         }
     }
-
     return 0;
 }
