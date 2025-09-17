@@ -3,10 +3,9 @@
 int binarySearch(int *a, int n, int target) // O(log n)
 {
     int l = 0, r = n - 1;
-    int mid = (l + r) / 2;
-
-    while (l < r)
+    while (l <= r)
     {
+        int mid = (l + r) / 2;
         if (target == a[mid])
         {
             return mid;
@@ -25,8 +24,12 @@ int binarySearch(int *a, int n, int target) // O(log n)
 
 int main()
 {
-    int a[] = {20, 30, 40, 50, 88, 44, 66, 22, 99};
+    int a[] = {20, 22, 30, 40, 44, 50, 66, 88, 99}; // Sorted array
     int n = sizeof(a) / sizeof(a[0]);
     int searchIdx = binarySearch(a, n, 50);
+    if (searchIdx != -1)
+        printf("Element found at index %d\n", searchIdx);
+    else
+        printf("Element not found\n");
     return 0;
 }

@@ -53,70 +53,33 @@ struct Node *search(struct Node *root, int key)
 void preorder(struct Node *root)
 {
     if (root == NULL)
-    {
-        printf("Tree is empty");
         return;
-    }
-    else
-    {
-        printf("%d ", root->key);
-    }
 
-    if (root->left != NULL)
-    {
-        preorder(root->left);
-    }
-
-    if (root->right != NULL)
-    {
-        preorder(root->right);
-    }
-    return;
+    printf("%d ", root->key);
+    preorder(root->left);
+    preorder(root->right);
 }
 
 // in order traversal
 void inorder(struct Node *root)
 {
     if (root == NULL)
-    {
-        printf("Tree is empty");
         return;
-    }
 
-    if (root->left != NULL)
-    {
-        inorder(root->left);
-    }
-
+    inorder(root->left);
     printf("%d ", root->key);
-
-    if (root->right != NULL)
-    {
-        inorder(root->right);
-    }
-    return;
+    inorder(root->right);
 }
 
 // post order traversal
 void postorder(struct Node *root)
 {
     if (root == NULL)
-    {
-        printf("Tree is empty");
         return;
-    }
 
-    if (root->left != NULL)
-    {
-        postorder(root->left);
-    }
-
-    if (root->right != NULL)
-    {
-        postorder(root->right);
-    }
+    postorder(root->left);
+    postorder(root->right);
     printf("%d ", root->key);
-    return;
 }
 
 // in order predecessor
@@ -155,7 +118,6 @@ struct Node *deleteNode(struct Node *root, int key)
     }
 
     // deletion method when root is found
-
     else
     {
         if (root->left == NULL)

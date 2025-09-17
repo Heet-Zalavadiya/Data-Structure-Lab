@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int k[10];
 
@@ -11,21 +12,21 @@ void swap(int *a, int *b)
 
 void quicksort(int lb, int ub)
 {
-    int flag = 1;
+    bool flag = true;
     if (lb < ub)
     {
         int i = lb;
         int j = ub + 1;
         int key = k[lb];
-        while (flag == 1)
+        while (flag == true)
         {
             i++;
-            while (k[i] < key)
+            while (i <= ub && k[i] < key)
             {
                 i++;
             }
             j--;
-            while (k[j] > key)
+            while (j >= lb && k[j] > key)
             {
                 j--;
             }
@@ -35,7 +36,7 @@ void quicksort(int lb, int ub)
             }
             else
             {
-                flag = 0;
+                flag = false;
             }
         }
         swap(&k[lb], &k[j]);
@@ -47,5 +48,17 @@ void quicksort(int lb, int ub)
 
 int main()
 {
+    int i;
+    printf("Enter 10 elements:\n");
+    for (i = 0; i < 10; i++)
+        scanf("%d", &k[i]);
+
+    quicksort(0, 9);
+
+    printf("Sorted array:\n");
+    for (i = 0; i < 10; i++)
+        printf("%d ", k[i]);
+    printf("\n");
+
     return 0;
 }
