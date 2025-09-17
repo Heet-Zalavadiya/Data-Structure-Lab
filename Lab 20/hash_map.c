@@ -58,7 +58,7 @@ void add(char k[], int v)
     }
 }
 
-int get(char k) 
+int get(char k[]) 
 {
     for (size_t i = 0; i < m; i++)
     {
@@ -70,9 +70,23 @@ int get(char k)
     return -1;
 }
 
-
 int main()
 {
+    // Initialize hashmap keys to empty strings
+    for (int i = 0; i < m; i++) {
+        hashmap[i].key[0] = '\0';
+        hashmap[i].value = 0;
+    }
+
+    // Example usage
+    add("apple", 5);
+    add("banana", 10);
+    add("orange", 7);
+
+    printf("apple: %d\n", get("apple"));
+    printf("banana: %d\n", get("banana"));
+    printf("orange: %d\n", get("orange"));
+    printf("grape: %d\n", get("grape")); // not present, should print -1
 
     return 0;
 }

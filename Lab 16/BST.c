@@ -97,15 +97,10 @@ struct Node *inOrderPredecessor(struct Node *root)
 struct Node *deleteNode(struct Node *root, int key)
 {
     struct Node *ipre;
-    while (root == NULL)
+    if (root == NULL)
     {
         return NULL;
     }
-    // if (root->left == NULL && root->right == NULL)
-    // {
-    //     free(root);
-    //     return NULL;
-    // }
 
     // search for the node to be deleted
     if (key < root->key)
@@ -116,20 +111,21 @@ struct Node *deleteNode(struct Node *root, int key)
     {
         root->right = deleteNode(root->right, key);
     }
-
     // deletion method when root is found
     else
     {
         if (root->left == NULL)
         {
-            return root->right;
+            struct Node *temp = root->right;
+            free(root);
+            return temp;
         }
-
-        if (root->right == NULL)
+        else if (root->right == NULL)
         {
-            return root->left;
+            struct Node *temp = root->left;
+            free(root);
+            return temp;
         }
-
         ipre = inOrderPredecessor(root);
         root->key = ipre->key;
         root->left = deleteNode(root->left, ipre->key);
