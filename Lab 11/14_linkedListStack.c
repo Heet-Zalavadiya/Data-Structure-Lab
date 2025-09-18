@@ -68,6 +68,25 @@ int pop(struct Node **top)
     }
 }
 
+void display(struct Node *top)
+{
+    if (isEmpty(top))
+    {
+        printf("Stack is empty\n");
+    }
+    else
+    {
+        printf("Stack elements (Top -> Bottom):\n");
+        struct Node *ptr = top;
+        while (ptr != NULL)
+        {
+            printf("%d ", ptr->data);
+            ptr = ptr->next;
+        }
+        printf("\n");
+    }
+}
+
 int main()
 {
     struct Node *top = NULL;
